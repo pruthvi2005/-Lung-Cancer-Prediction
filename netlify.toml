@@ -1,0 +1,16 @@
+[build]
+  command = "cd 'CODE/FRONT END' && pip install -r ../../requirements.txt"
+  publish = "CODE/FRONT END"
+
+[build.environment]
+  PYTHON_VERSION = "3.9"
+  FLASK_APP = "app.py"
+  FLASK_ENV = "production"
+
+[functions]
+  directory = "functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/app/:splat"
+  status = 200

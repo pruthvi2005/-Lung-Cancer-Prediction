@@ -3,10 +3,14 @@ import sqlite3
 import pandas as pd
 import joblib
 import os
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'admin'
+app.secret_key = os.getenv('SECRET_KEY', 'admin')
+app.config['DEBUG'] = os.getenv('DEBUG', 'False').lower() == 'true'
 
 # Create SQLite database
 def init_db():
@@ -219,4 +223,5 @@ def prediction():
 
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=app.config['DEBUG'])
