@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+
+
+{% block content%}
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-7" style="margin-top: 70px;">
+                    <div class="section-title position-relative pb-3 mb-5">
+                        <h5 class="fw-bold text-primary text-uppercase">About Project </h5>
+                        <h3 class="mb-0 fw-bold text-white">Lung Cancer Prediction Using Machine Learning
+                            </h3>
+                    </div>
+                    <p class="mb-4"  style="color: rgb(255, 255, 255);">This project leverages machine learning algorithms such as Random Forest, XGBoost, SVM, adaboost and a Voting Classifier to predict lung cancer risk levels. The model categorizes individuals into three risk categories: low, medium, and high, based on various health parameters and diagnostic data. By combining the strengths of multiple classifiers, the Voting Classifier improves prediction accuracy and robustness, making it a reliable tool for early detection and risk assessment in lung cancer diagnosis. The use of these advanced machine learning techniques ensures optimal performance and precise classification for better decision-making in healthcare.</p>
+                </div>
+                <div class="col-lg-5" style="min-height: 400px;">
+                    <div class="position-relative h-100" style="margin-top: 20px;">
+                        <img class="position-absolute rounded wow zoomIn" data-wow-delay="0.9s" src="static\img\image.jpg" style="object-fit: cover;height: 450px;width: 400px;border-radius: 20%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

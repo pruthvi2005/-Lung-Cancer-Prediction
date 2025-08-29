@@ -1,0 +1,152 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto col-12" style="background-color: rgba(88, 91, 97, 0.8); margin-top: 120px; border-radius: 15px; padding: 40px;">
+                <h2 class="hero-title text-center mb-4" style="color: #ffffff; font-weight: bold;">Predicting Lung Cancer</h2>
+                
+                <div class="row">
+                    <div class="col-lg-10 col-12 mx-auto">
+                        {% if prediction %}
+                            <h2 style="color: #ffffff;">Risk Level: {{ prediction }}</h2>
+    
+                            {% if recommendations %}
+                                <h3 style="color: #ffffff;">Personalized Recommendations:</h3>
+                                <ol style="color: #ffffff;">
+                                    {% for recommendation in recommendations %}
+                                        <li>{{ recommendation }}</li>
+                                    {% endfor %}
+                                </ol>
+                            {% endif %}
+                        {% endif %}
+                        
+                        <form action="{{ url_for('prediction') }}" method="post" role="form">
+                            <!-- Row for Select fields -->
+                            <div class="row mb-3">
+                                <!-- Air Pollution and Alcohol Use -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="air_pollution" class="form-label" style="color: #ffffff;">Air Pollution</label>
+                                    <select id="air_pollution" name="Air Pollution" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Air Pollution</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="alcohol_use" class="form-label" style="color: #ffffff;">Alcohol Use</label>
+                                    <select id="alcohol_use" name="Alcohol use" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Alcohol Use</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Row for Genetic Risk and Balanced Diet -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="genetic_risk" class="form-label" style="color: #ffffff;">Genetic Risk</label>
+                                    <select id="genetic_risk" name="Genetic Risk" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Genetic Risk</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="balanced_diet" class="form-label" style="color: #ffffff;">Balanced Diet</label>
+                                    <select id="balanced_diet" name="Balanced Diet" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Balanced Diet</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Row for Obesity and Smoking -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="obesity" class="form-label" style="color: #ffffff;">Obesity</label>
+                                    <select id="obesity" name="Obesity" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Obesity</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="smoking" class="form-label" style="color: #ffffff;">Smoking</label>
+                                    <select id="smoking" name="Smoking" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Smoking</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Row for Passive Smoker and Chest Pain -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="passive_smoker" class="form-label" style="color: #ffffff;">Passive Smoker</label>
+                                    <select id="passive_smoker" name="Passive Smoker" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Passive Smoker</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="chest_pain" class="form-label" style="color: #ffffff;">Chest Pain</label>
+                                    <select id="chest_pain" name="Chest Pain" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Chest Pain</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Row for Coughing of Blood and Fatigue -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="coughing_of_blood" class="form-label" style="color: #ffffff;">Coughing of Blood</label>
+                                    <select id="coughing_of_blood" name="Coughing of Blood" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Coughing of Blood</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="fatigue" class="form-label" style="color: #ffffff;">Fatigue</label>
+                                    <select id="fatigue" name="Fatigue" class="form-select" style="border-radius: 25px; height: 45px;" required>
+                                        <option value="">Choose Fatigue</option>
+                                        {% for i in range(0, 11) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-flex justify-content-center mt-4 mb-3"> 
+                                <button type="submit" class="btn custom-btn" style="width: 100%; max-width: 400px; border-radius: 30px; height: 50px; background-color: #8a8c8f; color: #ffffff; font-weight: bold;">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
