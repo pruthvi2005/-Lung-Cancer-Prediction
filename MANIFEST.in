@@ -1,0 +1,5 @@
+include README.md
+recursive-include CODE/FRONT END/static *
+recursive-include CODE/FRONT END/templates *
+include CODE/FRONT END/*.py
+include requirements.txt
