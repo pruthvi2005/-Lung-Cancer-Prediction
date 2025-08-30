@@ -1,5 +1,5 @@
 [build]
-  command = "pip install -r requirements.txt"
+  command = "chmod +x build.sh && ./build.sh"
   publish = "CODE/FRONT END/static"
   functions = "netlify/functions"
 
@@ -8,11 +8,6 @@
   NODE_VERSION = "16"
   FLASK_APP = "app.py"
   FLASK_ENV = "production"
-  PYTHONUNBUFFERED = "true"
-  PYTHON_VERBOSE = "true"
-  PIPENV_RUN_BIN = "/opt/buildhome/.local/bin/pipenv"
-  # Disable MISE Python version management
-  MISE_USE_LEGACY_VERSION_FILES = "1"
 
 [functions]
   node_bundler = "esbuild"
