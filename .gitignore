@@ -18,6 +18,36 @@ var/
 wheels/
 *.egg-info/
 .installed.cfg
+
+# Environment variables
+.env
+
+# Virtual Environment
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Database
+*.sqlite
+*.db
+
+# Local development
+instance/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 *.egg
 
 # Virtual Environment
