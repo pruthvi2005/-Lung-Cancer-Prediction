@@ -1,16 +1,27 @@
 [build]
-  command = "cd 'CODE/FRONT END' && pip install -r ../../requirements.txt"
-  publish = "CODE/FRONT END"
+  command = "pip install -r requirements.txt"
+  publish = "CODE/FRONT END/static"
+  functions = "netlify/functions"
 
 [build.environment]
   PYTHON_VERSION = "3.9"
+  NODE_VERSION = "16"
   FLASK_APP = "app.py"
   FLASK_ENV = "production"
+  PYTHONUNBUFFERED = "true"
 
 [functions]
-  directory = "functions"
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/plugin-functions-install-core"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/app/:splat"
+  status = 200
+  force = false
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/app/:splat"
+  to = "/index.html"
   status = 200
+  force = false
