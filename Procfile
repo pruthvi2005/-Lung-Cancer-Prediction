@@ -1,1 +1,1 @@
-web: cd "CODE/FRONT END" && gunicorn app:app
+web: gunicorn wsgi:app
