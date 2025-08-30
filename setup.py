@@ -1,22 +1,11 @@
-from setuptools import setup, find_packages
-import setuptools
-
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+from setuptools import setup
 
 setup(
     name="lung_cancer_prediction",
     version="1.0.0",
-    author="Your Name",
-    author_email="your.email@example.com",
-    description="Lung Cancer Prediction Application",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/lung-cancer-prediction",
-    packages=find_packages(where="CODE"),
-    package_dir={"": "CODE"},
+    packages=["CODE.FRONT_END"],
+    package_dir={"CODE.FRONT_END": "CODE/FRONT_END"},
     include_package_data=True,
-    python_requires=">=3.7",
     install_requires=[
         'Flask==2.0.1',
         'Flask-SQLAlchemy==2.5.1',
