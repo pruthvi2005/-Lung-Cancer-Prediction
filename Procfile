@@ -1,1 +1,1 @@
-web: gunicorn CODE.FRONT_END.app:app
+web: gunicorn wsgi:application

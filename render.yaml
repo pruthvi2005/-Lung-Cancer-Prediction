@@ -3,12 +3,12 @@ services:
     name: lung-cancer-prediction
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn CODE.FRONT_END.app:app"
+    startCommand: "gunicorn wsgi:application"
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.16
       - key: FLASK_APP
-        value: "CODE/FRONT_END/app.py"
+        value: "CODE/FRONT END/app.py"
       - key: FLASK_ENV
         value: production
       - key: PYTHONUNBUFFERED
