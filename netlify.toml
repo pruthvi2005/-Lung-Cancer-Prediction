@@ -1,14 +1,15 @@
 [build]
-  command = "pip install -r requirements.txt"
+  command = "python -m pip install --upgrade pip && python -m pip install -r requirements.txt"
   publish = "CODE/FRONT END/static"
   functions = "netlify/functions"
 
 [build.environment]
-  PYTHON_VERSION = "3.9"
+  PYTHON_VERSION = "3.9.16"
   NODE_VERSION = "16"
   FLASK_APP = "app.py"
   FLASK_ENV = "production"
   PYTHONUNBUFFERED = "true"
+  PIPENV_RUN_BIN = "/opt/buildhome/.local/bin/pipenv"
 
 [functions]
   node_bundler = "esbuild"
